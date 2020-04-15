@@ -34,7 +34,7 @@ public class ProductCrudService {
     }
 
     public Product updateProduct(final Product product, final Long id){
-        log.debug("Update product");
+        log.info("Update product");
         final Product existingProduct = getById(id);
         existingProduct.setCategory(product.getCategory());
         existingProduct.setName(product.getName());
