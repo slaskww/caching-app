@@ -1,0 +1,17 @@
+<!-- Konfiguracja 'wiaderek' przechowujących cachowane dane (konfiguracja providera ehcache)
+     wiaderko 'products-template', przechowuje dane przez 60 sec, jego capacity to 2000 obiektów
+
+ -->
+
+<config xmlns="http://www.ehcache.org/v3">
+    <cache alias="products" uses-template="products-template"/>
+    <cache-template name="products-template">
+        <expiry>
+            <ttl unit="seconds">60</ttl>
+        </expiry>
+        <resources>
+            <heap unit="entries">5000
+            </heap>
+        </resources>
+    </cache-template>
+</config>
