@@ -1,6 +1,7 @@
 package pl.ksals.caching.services;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import pl.ksals.caching.domain.Product;
 import pl.ksals.caching.repository.ProductRepository;
@@ -17,11 +18,13 @@ public class ProductCrudService {
         this.productRepository = productRepository;
     }
 
+    @Cacheable(cacheNames = "products")
     public List<Product> getAll(){
         log.info("Get all products");
        return productRepository.findAll();
     }
 
+    @Cacheable(cacheNames = "products")
     public Product getById(final Long id){
         log.info("Get product by id " + id);
         return productRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Product with id doesn't exist"));

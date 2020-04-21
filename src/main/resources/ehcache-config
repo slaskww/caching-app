@@ -1,6 +1,14 @@
 <!-- Konfiguracja 'wiaderek' przechowujących cachowane dane (konfiguracja providera ehcache)
      wiaderko 'products-template', przechowuje dane przez 60 sec, jego capacity to 2000 obiektów
 
+          <expiry>
+            <tti unit="seconds">10</tti>
+            <ttl unit="minutes">2</ttl>
+          </expiry>
+
+       ttl - time to live - czas przez jaki dane będą przechowywane w wiaderku, zanim zostaną usunięte
+       tti - time to idle - czas przez jaki dane będą przechowywane w wiaderku, jeżli nie będą 'dotykane'
+
  -->
 
 <config xmlns="http://www.ehcache.org/v3">
@@ -10,7 +18,7 @@
             <ttl unit="seconds">60</ttl>
         </expiry>
         <resources>
-            <heap unit="entries">5000
+            <heap unit="entries">2000
             </heap>
         </resources>
     </cache-template>
