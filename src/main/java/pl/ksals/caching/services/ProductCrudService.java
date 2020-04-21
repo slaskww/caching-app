@@ -21,14 +21,16 @@ public class ProductCrudService {
     }
 
     //adnotacja sprawia, że wynik metody trafia do cache
-    @Cacheable(cacheNames = "products")
+    //dodatkowy warunek przy użyciu SpEL, cachowanie nastapi gdy metoda zwróci co najmniej 5 elementów
+    @Cacheable(cacheNames = "products", unless = "#result.size() < 5")
     public List<Product> getAll(){
         log.info("Get all products");
        return productRepository.findAll();
     }
 
     //adnotacja sprawia, że wynik metody trafia do cache
-    @Cacheable(cacheNames = "single-product")
+    //dodatkowy warunek przy użyciu SpEL, cachowanie nastapi gdy id produkttu jest większe od 4
+    @Cacheable(cacheNames = "single-product", condition = "#id > 4")
     public Product getById(final Long id){
         log.info("Get product by id " + id);
         return productRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Product with id doesn't exist"));
