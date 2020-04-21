@@ -12,8 +12,21 @@
  -->
 
 <config xmlns="http://www.ehcache.org/v3">
-    <cache alias="products" uses-template="products-template"/>
-    <cache-template name="products-template">
+    <cache alias="products" uses-template="products"/>
+    <cache alias="single-product" uses-template="single-product"/>
+
+
+    <cache-template name="products">
+        <expiry>
+            <ttl unit="seconds">60</ttl>
+        </expiry>
+        <resources>
+            <heap unit="entries">2000
+            </heap>
+        </resources>
+    </cache-template>
+
+    <cache-template name="single-product">
         <expiry>
             <ttl unit="seconds">60</ttl>
         </expiry>
