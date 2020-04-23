@@ -14,6 +14,7 @@
 <config xmlns="http://www.ehcache.org/v3">
     <cache alias="products" uses-template="products"/>
     <cache alias="single-product" uses-template="single-product"/>
+    <cache alias="pets"/>
 
 
     <cache-template name="products">
@@ -33,6 +34,15 @@
         <resources>
             <heap unit="entries">2000
             </heap>
+        </resources>
+    </cache-template>
+
+    <cache-template name="pets">
+        <expiry>
+            <ttl unit="seconds">60</ttl>
+        </expiry>
+        <resources>
+            <heap unit="entries">1000</heap>
         </resources>
     </cache-template>
 </config>

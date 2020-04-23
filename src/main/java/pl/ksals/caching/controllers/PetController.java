@@ -1,14 +1,13 @@
 package pl.ksals.caching.controllers;
 
 import org.springframework.http.HttpStatus;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import pl.ksals.caching.domain.Pet;
 import pl.ksals.caching.model.Pets;
 import pl.ksals.caching.services.PetCrudService;
 
 @RestController
-@RequestMapping("api/pets")
+@RequestMapping("/api/pets")
 public class PetController {
 
     private final PetCrudService petCrudService;
